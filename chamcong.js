@@ -6,21 +6,22 @@ const worksheet = workbook.Sheets[sheetName];
 const data = xlsx.utils.sheet_to_json(worksheet);
 // console.log(data);
 
-const addMissingKey = (object) => {
-  [object].forEach((obj) => {
-    let prevValue = null;
-    console.log();
-    for (let i = 1; i <= 140; i++) {
-      const key = `__EMPTY_${i}`;
-      if (!(key in obj)) {
-        obj[key] = prevValue;
-      } else {
-        prevValue = obj[key];
-      }
-    }
-  });
-};
-addMissingKey(data[1]);
+// // Lọc ra những data còn trống
+// const addMissingKey = (object) => {
+//   [object].forEach((obj) => {
+//     let prevValue = null;
+//     console.log();
+//     for (let i = 1; i <= 140; i++) {
+//       const key = `__EMPTY_${i}`;
+//       if (!(key in obj)) {
+//         obj[key] = prevValue;
+//       } else {
+//         prevValue = obj[key];
+//       }
+//     }
+//   });
+// };
+// addMissingKey(data[1]);
 
 // Khởi tạo một đối tượng rỗng để chứa dữ liệu
 const allData = {};
@@ -55,7 +56,7 @@ for (let row = 4; row < data.length; row++) {
         personObj[data[1][column]] = {
           ...personObj[data[1][column]],
           GC: colValue,
-        }; //tìm GC và thên vào
+        };
       }
     }
     // console.log(personObj);
@@ -67,7 +68,7 @@ for (let row = 4; row < data.length; row++) {
         personObj[data[1][column]] = {
           ...personObj[data[1][column]],
           CN: colValue,
-        }; //tìm CN và thên vào
+        };
       }
     }
     if (value == "GC1") {
@@ -77,7 +78,7 @@ for (let row = 4; row < data.length; row++) {
         personObj[data[1][column]] = {
           ...personObj[data[1][column]],
           GC1: colValue,
-        }; //tìm GC1 và thên vào
+        };
       }
     }
     if (value == "TC") {
@@ -87,7 +88,7 @@ for (let row = 4; row < data.length; row++) {
         personObj[data[1][column]] = {
           ...personObj[data[1][column]],
           TC: colValue,
-        }; //tìm TC và thên vào
+        };
       }
     }
     if (value == "TC1") {
@@ -97,7 +98,7 @@ for (let row = 4; row < data.length; row++) {
         personObj[data[1][column]] = {
           ...personObj[data[1][column]],
           TC1: colValue,
-        }; //tìm TC1 và thên vào
+        };
       }
     }
     if (value == "WKD") {
@@ -152,5 +153,4 @@ for (let row = 4; row < data.length; row++) {
     allData[data[row].__EMPTY_2] = personObj;
   }
 }
-// Đăng nhập đối tượng allpersonObj
 console.log(allData);
