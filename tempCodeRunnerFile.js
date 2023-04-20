@@ -1,9 +1,9 @@
-let datanew = [data[3].data[4]];
+function run() {
+  var object1 = { foo: "bar", a: 5 };
 
-// let gsum = 0;
+  var object2 = { name: "foo", d: 10 };
 
-// for (let i in datanew[0]) {
-//   console.log(i);
-//   if (data[0][i] == "GC") {
-//   }
-// }
+  Object.assign(object1, object2);
+
+  console.log(object2);
+}
